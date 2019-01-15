@@ -6,6 +6,8 @@ module.exports = {
     },
     getOne(id) {
         return knex('spring').where('id', id).first();
-        
+    },
+    create(spring) {
+        return knex('spring').insert(spring, '*');
     }
 }
