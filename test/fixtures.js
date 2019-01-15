@@ -30,6 +30,16 @@ const springs = [
       }
 ];
 
+const spring = {
+    "id": 5,
+	"name": "Hot Sulphur Springs",
+    "description": "Old, local hot springs establishment outside of Kremmling, CO. Several different types of pools and lodging.",
+    "location": "Hot Sulphur Springs, CO",
+    "access_rating": 0,
+	"url": "http://hotsulphursprings.com/"
+};
+
 module.exports = {
-    springs
+    springs,
+    spring
 };
