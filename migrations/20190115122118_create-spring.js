@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.text('name');
     table.text('description');
     table.text('location');
-    table.float('access rating');
+    table.float('access_rating');
     table.text('url');
   });
 };
