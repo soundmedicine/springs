@@ -2,8 +2,9 @@ const request = require('supertest');
 const expect = require('chai').expect;
 const knex = require('../db/knex');
 
-
 const app = require('../app');
+
+const fixtures = require('./fixtures');
 
 describe('CRUD Springs', () => {
     before((done) => {
@@ -21,7 +22,7 @@ describe('CRUD Springs', () => {
             .expect(200)
             .then((response) => {
                 expect(response.body).to.be.a('array');
-                console.log(response.body);
+                expect(response.body).to.deep.equal(fixtures.springs);
                 done();
             })
     })
