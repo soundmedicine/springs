@@ -24,6 +24,33 @@ describe('CRUD Springs', () => {
                 expect(response.body).to.be.a('array');
                 expect(response.body).to.deep.equal(fixtures.springs);
                 done();
-            })
-    })
+        });
+    });
+
+    it('Lists record by id ...', (done) => {
+        request(app)
+            .get('/api/v1/springs/1')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                expect(response.body).to.deep.equal(fixtures.springs[0]);
+                done();
+        });
+    });
+
+    it('Show one record by id ...', (done) => {
+        request(app)
+            .get('/api/v1/springs/4')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                expect(response.body).to.deep.equal(fixtures.springs[3]);
+                done();
+        });
+    });
+
 });
