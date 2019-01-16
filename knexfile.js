@@ -9,4 +9,9 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/test-springs'
   },
+  production: {
+    client: 'pg',
+    connection: process.env.DATABASE_URL
+  }
 };
+
