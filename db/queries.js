@@ -9,5 +9,8 @@ module.exports = {
     },
     create(spring) {
         return knex('spring').insert(spring, '*');
+    },
+    update(id, spring) {
+        return knex('spring').where('id', id).update(spring, '*');
     }
 }

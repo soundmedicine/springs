@@ -12,7 +12,9 @@ function isValidId(req, res, next) {
 function validSpring(spring) {
     const hasName = typeof spring.name == 'string' && spring.name.trim() != '';
     const hasURL = typeof spring.url == 'string' && spring.url.trim() != '';
-    return hasName && hasURL;
+    const hasDescription = typeof spring.description == 'string' && spring.description.trim() != '';
+    const hasRating = !isNaN(spring.access_rating);
+    return hasName && hasURL && hasRating;
 }
 
 router.get('/', (req, res) => {
@@ -42,4 +44,13 @@ router.post('/', (req, res, next) => {
     }
 });
 
+router.put('/:id', isValidId, (req, res, next) => {
+    if(validSpring(req.body)) {
+        queries.update(req.params.id, req.body).then(springs => {
+            res.json(springs[0]);
+        });
+    } else {
+        next(new Error('Invalid spring'));
+    }
+})
 module.exports = router;
