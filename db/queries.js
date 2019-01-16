@@ -12,5 +12,8 @@ module.exports = {
     },
     update(id, spring) {
         return knex('spring').where('id', id).update(spring, '*');
+    },
+    delete(id) {
+        return knex('spring').where('id', id).delete();
     }
 }

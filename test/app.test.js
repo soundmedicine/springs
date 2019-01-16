@@ -82,5 +82,20 @@ describe('CRUD Springs', () => {
                 expect(response.body).to.deep.equal(fixtures.spring);
                 done();
         });
-    })
+    });
+
+    it('Deletes a record', (done) => {
+        request(app)
+            .delete('/api/v1/springs/5')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                expect(response.body).to.deep.equal({
+                    deleted: true
+                });
+                done();
+        });
+    });
 });
