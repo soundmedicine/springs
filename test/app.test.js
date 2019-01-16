@@ -67,4 +67,20 @@ describe('CRUD Springs', () => {
                 done();
         });
     });
+
+    it('Updates a record', (done) => {
+        fixtures.spring.access_rating = 2;
+        request(app)
+            .put('/api/v1/springs/5')
+            .send(fixtures.spring)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).to.be.a('object');
+                fixtures.spring.id = response.body.id;
+                expect(response.body).to.deep.equal(fixtures.spring);
+                done();
+        });
+    })
 });
